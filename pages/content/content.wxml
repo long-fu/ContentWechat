@@ -12,11 +12,11 @@
 
 
 <template name="cell-item">
-  <view class="cell-item-view" hover-start-time=3>
+  <view class="cell-item-view">
     <image class="head-image-view" src="{{image}}"></image>
     <view class="item-info-view">
         <view class="name-view">{{name}}</view>
-        <view class="number-view">{{number}}</view>
+        <view class="number-view" bindtap="calling_phone">{{number}}</view>
     </view>
   </view>
 </template>

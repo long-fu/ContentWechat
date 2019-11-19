@@ -68,9 +68,9 @@ Page({
 
   },
 
-  calling_phone:function(phoneNumber_str){
+  calling_phone:function(){
     wx.makePhoneCall({
-      phoneNumber: phoneNumber_str, //此号码并非真实电话号码，仅用于测试
+      phoneNumber: "18682435851", //此号码并非真实电话号码，仅用于测试
       success:function(){
         console.log("拨打电话成功！")
       },
