@@ -1,0 +1,22 @@
+<view class="container">
+
+<view class="page-section-title">电话本</view>
+<scroll-view class="table-view" scroll-y="true">
+<block wx:for="{{array}}">
+    <template is="cell-item" data="{{...item}}"></template>
+</block>
+</scroll-view>
+
+</view>
+
+
+
+<template name="cell-item">
+  <view class="cell-item-view" hover-start-time=3>
+    <image class="head-image-view" src="{{image}}"></image>
+    <view class="item-info-view">
+        <view class="name-view">{{name}}</view>
+        <view class="number-view">{{number}}</view>
+    </view>
+  </view>
+</template>
