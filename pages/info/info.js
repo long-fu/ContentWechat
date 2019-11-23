@@ -5,7 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    image:"../../resource/image/touxiang.jpeg",
+    name:"我是谁",
+    array: [{phone:"1868225123"},{phone:"1868225123"}],
+    remarks: "我就是备注"
   },
 
   /**

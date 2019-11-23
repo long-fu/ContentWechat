@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container_body">
 
 <view class="page-section-title">电话本</view>
 <scroll-view class="table-view" scroll-y="true">
@@ -6,7 +6,6 @@
     <template is="cell-item" data="{{...item}}"></template>
 </block>
 </scroll-view>
-
 </view>
 
 
@@ -16,7 +15,7 @@
     <image class="head-image-view" src="{{image}}"></image>
     <view class="item-info-view">
         <view class="name-view">{{name}}</view>
-        <view class="number-view" bindtap="calling_phone">{{number}}</view>
+        <view class="number-view" bindtap="calling_phone">{{number[0]}}</view>
     </view>
   </view>
 </template>

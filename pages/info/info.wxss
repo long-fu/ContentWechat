@@ -1,1 +1,80 @@
 /* pages/info/info.wxss */
+page{
+    height: 100%;
+    width: 100%;
+}
+
+.container_body_view{
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: bisque;
+}
+
+.avatar_image_bg_view {
+    width: 100%;
+    height: 100rpx;
+    background-color: black;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.avatar_image_view {
+    height: 100rpx;
+    width: 100rpx;
+    align-content: center;
+    align-self: center;
+    align-items: center;
+    background-color: blueviolet;
+}
+
+.nike_name_view {
+  margin-top: 10rpx;
+    width: 100%;
+    text-align: center;
+    font-size: 32rpx;
+    background-color: blueviolet;
+}
+
+.phone_number_body_view{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.phone_title_view {
+    width: 100%;
+    text-align: left;
+    font-size: 35rpx;
+}
+
+.phone_number_view {
+    width: 100%;
+    text-align: left;
+    font-size: 35rpx;
+}
+
+.line_view {
+    width: 100%;
+    height: 1rpx;
+    background-color: aliceblue;
+}
+
+.remarks_title_view {
+  margin-top: 10rpx;
+  width: 100%;
+  background-color: aqua;
+  font: 35rpx;
+}
+
+.remarks_text_view {
+  margin-top: 10rpx;
+    width: 100%;
+    font: 30rpx;
+    background-color: blueviolet;
+}

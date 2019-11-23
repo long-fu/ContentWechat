@@ -1,4 +1,24 @@
-<!--pages/info/info.wxml-->
-<!-- <text>pages/info/info.wxml</text> -->
+<view class="container_body_view">
+    <!-- 头像 -->
+    <view class="avatar_image_bg_view">
+        <image class="avatar_image_view" src="{{image}}"/>
+    </view>
 
-<image></image>
+    <!-- 昵称 -->
+    <view class="nike_name_view">{{name}}</view>
+    <!-- 号码 -->
+    <view class="phone_number_body_view">
+        <block wx:for="{{array}}">
+            <template is="phone_number" data="{{...item}}"></template>
+        </block>
+    </view>
+    <!-- 备注 -->
+    <view class="remarks_title_view">备注</view>
+    <view class="remarks_text_view">{{remarks}}</view>
+</view>
+
+<template name="phone_number">
+  <view class="phone_title_view">电话{{index}}</view>
+  <view class="phone_number_view">{{phone}}</view>
+  <view class="line_view"></view>
+</template>

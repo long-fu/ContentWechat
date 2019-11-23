@@ -8,7 +8,7 @@ Page({
     array:[
       {image:"../../resource/image/touxiang.jpeg",
       name:"我的名字",
-      number:"1231235167257"}
+      number:["1231235167257"]}
   ]
   },
 
