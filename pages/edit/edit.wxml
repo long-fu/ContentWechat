@@ -1,0 +1,37 @@
+<!-- pages/edit/edit.wxml -->
+<text>pages/edit/edit.wxml</text>
+<view class="container_body">
+
+    <view class="avatar_image_bg_view">
+        <image class="avatar_image_view" src="{{image}}" />
+    </view>
+    
+    <view class="nike_name_view">
+        <view class="nike_name_title_text_view">姓名</view>
+        <textarea class="nike_name_textarea_view">{{name}}</textarea>
+    </view>
+
+    <view class="phone_number_view">
+    
+
+
+    <view class="add_phone_btn_view">
+    <image src="" />
+    <view class="add_phone_title_view">添加电话号码</view>
+    </view>
+
+    </view>
+
+    <block wx:if="{{type}}">
+    <button class="delete_button">删除联系人</button>
+    </block>
+
+    
+</view>
+
+<template name="add_input_phone">
+<view class="input_phone_view">
+<image src="" />
+<textarea class="input_phone_number"></textarea>
+</view>
+</template>

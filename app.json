@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/edit/edit",
     "pages/info/info",
     "pages/content/content",
     "pages/index/index",
