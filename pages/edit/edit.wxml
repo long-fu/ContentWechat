@@ -1,37 +1,41 @@
-<!-- pages/edit/edit.wxml -->
-<text>pages/edit/edit.wxml</text>
 <view class="container_body">
-
+    <!-- 头像 -->
     <view class="avatar_image_bg_view">
         <image class="avatar_image_view" src="{{image}}" />
     </view>
     
+    <!-- 名称 -->
     <view class="nike_name_view">
-        <view class="nike_name_title_text_view">姓名</view>
-        <textarea class="nike_name_textarea_view">{{name}}</textarea>
+        <text class="nike_name_title_text_view">姓名</text>
+        <textarea class="nike_name_textarea_view" placeholder="请输入输入姓名">{{name}}</textarea>
     </view>
 
+    <!-- 号码 -->
     <view class="phone_number_view">
     
-
-
+    <!-- 存在的号码 -->
+    <block wx:for="{{phone}}" wx:for-index="index" wx:for-item="item">
+        <template is="add_input_phone" data="{{...item}}"></template>
+    </block>
+    
+    <!-- 添加按钮 -->
     <view class="add_phone_btn_view">
-    <image src="" />
+    <image class="image_btn" src="" />
     <view class="add_phone_title_view">添加电话号码</view>
     </view>
 
     </view>
 
     <block wx:if="{{type}}">
-    <button class="delete_button">删除联系人</button>
+    <button class="delete_btn">删除联系人</button>
     </block>
 
-    
 </view>
 
 <template name="add_input_phone">
 <view class="input_phone_view">
-<image src="" />
-<textarea class="input_phone_number"></textarea>
+<image class="image_btn" src="" />
+<textarea class="input_phone_number_textarea" placeholder="请输入号码">{{number}}</textarea>
+<view class="line_view"></view>
 </view>
 </template>

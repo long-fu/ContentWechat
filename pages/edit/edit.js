@@ -5,10 +5,11 @@ Page({
    */
   data: {
     // flase 增加 true 编辑
-    type: false,
+    type: true,
     name: "",
     image: "../../resource/image/touxiang.jpeg",
-    phone: []
+    phone: [{type:"住宅",number:"18682417876381"},
+    {type:"住宅",number:"18682417876381"}]
   },
 
   /**
