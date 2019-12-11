@@ -1,4 +1,6 @@
 // pages/content/content.js
+
+const app = getApp()
 Page({
 
   /**
@@ -16,6 +18,59 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
+    if (app.globalData.openid) {
+      
+      // that.openid = app.globalData.openid
+      that.setData({
+        openid: app.globalData.openid
+      })
+      var open_id = app.globalData.openid
+      var body = { "open_id": open_id }
+      wx.request({
+        url: 'http://127.0.0.1:8888/get_content_index_list',
+        data: body,
+        header: {},
+        method: 'POST',
+        dataType: 'json',
+        responseType: 'text',
+        success: function (res) {
+          console.log("获取用户数据0")
+        },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+
+
+    } else {
+
+      app.openIdReadyCallback = res => {
+        console.log("回调获取openid",res)
+        
+        that.setData({
+          openid: res.data.openid
+        })
+
+        var open_id = app.globalData.openid
+        var body = { "open_id": open_id }
+
+        wx.request({
+          url: 'http://127.0.0.1:8888/get_content_index_list',
+          data: body,
+          header: {},
+          method: 'POST',
+          dataType: 'json',
+          responseType: 'text',
+          success: function (res) {
+            console.log("获取用户数据回调结果",res)
+          },
+          fail: function (res) { },
+          complete: function (res) { },
+        })
+
+      }
+
+    }
 
   },
 

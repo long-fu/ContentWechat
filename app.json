@@ -1,14 +1,15 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/content/content",
+    "pages/info/info",
     "pages/edit/edit",
-    "pages/info/info"
+    "pages/login/login",
+    "pages/welcome/welcome"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "🐘电话本",
     "navigationBarTextStyle": "black"
   },
   "style": "v2",
