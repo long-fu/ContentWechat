@@ -1,5 +1,6 @@
 <view class="container_body">
     <!-- 头像 -->
+    <form bindsubmit="bindFormSubmit">
     <view class="avatar_image_bg_view">
         <image class="avatar_image_view" src="{{info_data.nike_name}}" />
     </view>
@@ -7,21 +8,24 @@
     <!-- 名称 -->
     <view class="nike_name_view">
         <text class="nike_name_title_text_view">姓名</text>
-        <textarea class="nike_name_textarea_view" placeholder="请输入输入姓名">{{info_data.nike_name}}</textarea>
+        <textarea name="nike_name" class="nike_name_textarea_view" placeholder="请输入输入姓名">{{info_data.nike_name}}</textarea>
     </view>
 
     <!-- 号码 -->
     <view class="phone_number_view">
     
     <!-- 存在的号码 -->
+    
     <block wx:for="{{info_data.array}}" wx:key="item" wx:for-index="index" wx:for-item="item">
         <template is="add_input_phone" data="{{...item}}"></template>
     </block>
     
+
+    
     <!-- 添加按钮 -->
-    <view class="add_phone_btn_view">
+    <view class="add_phone_btn_view" bindtap="add_new_phone">
     <image class="image_btn" src="" />
-    <view class="add_phone_title_view">添加电话号码</view>
+    <view class="add_phone_title_view" >添加电话号码</view>
     </view>
 
     </view>
@@ -30,14 +34,15 @@
     <button class="delete_btn">删除联系人</button>
     </block>
     <block wx:else="{{is_add == 'false'}}">
-    <button class="add_btn" >保存</button>
+    <button class="add_btn" bindtap="save_info_data" formType="submit">保存</button>
     </block>
+    </form>
 </view>
 
 <template name="add_input_phone">
 <view class="input_phone_view">
 <image class="image_btn" src="" />
-<textarea class="input_phone_number_textarea" placeholder="请输入号码">{{phone_number}}</textarea>
+<textarea  name="phone_number" class="input_phone_number_textarea" placeholder="请输入号码">{{phone_number}}</textarea>
 <view class="line_view"></view>
 </view>
 </template>
