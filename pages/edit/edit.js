@@ -1,4 +1,5 @@
 // pages/edit/edit.js
+const app = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -21,8 +22,8 @@ Page({
         info_data : {
           nike_name: "",
           avatar_url: "",
-          remarks: "",
-          array: [{ type: "住宅",phone_number:""}]
+          remark: "",
+          array: [{ phone_type: "住宅",phone_number:""}]
         }
       })
     } else {
@@ -71,19 +72,72 @@ Page({
   },
 
   bindFormSubmit: function (e) {
-    console.log("开始提交数据")
-    console.log(e.detail.value)
+    
+    var data = e.detail.value
+    console.log("输入的号码部分",data)
+    var nike_name = ""
+    var phone_number = []
+    for (var key in data) {
+      if (key == 'nike_name'){
+        nike_name = data[key]
+      } else {
+        console.log("电话本号码", data[key])
+        phone_number.push(data[key])
+      }
+    }
+    console.log("我的电话本",phone_number)
+    var array = []
+    phone_number.forEach(phone => {
+      console.log("获取遍历数组",phone)
+      array.push({phone_type:"住宅",phone_number: phone})
+    })
+    // for (var phone in phone_number) {
+    //   console.log("获取遍历数组",phone)
+    //   array.push({phone_type:"住宅",phone_number: phone})
+    // }
+    console.log("用户电话号码",array)
+    var body = {
+      "open_id":  app.globalData.openid,
+      "nike_name": nike_name,
+      "avatar_url": "",
+      "remark": "",
+      "array": array
+    }
+
+    wx.request({
+      url: 'http://172.20.10.2:8888/add_content',
+      data: body,
+      header: {},
+      method: 'POST',
+      dataType: 'json',
+      responseType: 'text',
+      success: function (res) {
+        console.log("添加一个用户成功", res.data)
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+
   },
+
   add_new_phone:function() {
     console.log("新增电话")
     var that = this
     var info_data = that.data.info_data
-    var new_number = { type: "住宅", phone_number: "" }
+    var new_number = { phone_type: "住宅", phone_number: "" }
     info_data.array.push(new_number)
 
     console.log("老的数据", info_data)
+    
     that.setData({
       info_data: info_data
     });
+
+  },
+
+  delete_phone_number:function(e) {
+
+    console.log("删除号码",e)
+    
   }
 });

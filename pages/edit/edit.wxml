@@ -17,8 +17,8 @@
             <block wx:for="{{info_data.array}}" wx:key="item" wx:for-index="index" wx:for-item="item">
                 <!-- <template is="add_input_phone" data="{{...item}}"></template> -->
                 <view class="input_phone_view">
-                    <image class="image_btn" src="" />
-                    <textarea name="phone_number{{index}}" class="input_phone_number_textarea" placeholder="请输入号码">
+                    <image bindtap="delete_phone_number" class="image_btn" src="" />
+                    <textarea name="phone_number[{{index}}]" class="input_phone_number_textarea" placeholder="请输入号码">
                         {{item.phone_number}}
                     </textarea>
                     <view class="line_view"></view>
@@ -38,6 +38,8 @@
         </block>
     </form>
 </view>
+
+
 <template name="add_input_phone">
     <view class="input_phone_view">
         <image class="image_btn" src="" />

@@ -10,7 +10,7 @@ Page({
       {phone:"1868225123"},
       {phone:"1868225123"}
   ],
-    remarks: "我就是备注"
+    remark: "我就是备注"
   },
 
   /**
@@ -67,5 +67,24 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  delete: function(){
+    console.log("删除此条数据")
+  },
+  calling_phone:function(e){
+    
+    var phone_number = e.target.dataset.phone
+    console.log("打电话", phone_number)
+    
+    wx.makePhoneCall({
+      phoneNumber: phone_number, //此号码并非真实电话号码，仅用于测试
+      success:function(){
+        console.log("拨打电话成功！")
+      },
+      fail:function(){
+        console.log("拨打电话失败！")
+      }
+    })
   }
+
 })

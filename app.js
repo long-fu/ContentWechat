@@ -18,7 +18,7 @@ App({
         var str_json = JSON.stringify(json_obj, null, "\t")
         var that = this
         wx.request({
-          url: 'http://127.0.0.1:8888/get_open_id',
+          url: 'http://172.20.10.2:8888/get_open_id',
           data: str_json,
           header: {},
           method: 'POST',

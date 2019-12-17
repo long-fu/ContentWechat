@@ -24,14 +24,14 @@ Page({
       var open_id = app.globalData.openid
       var body = { "open_id": open_id }
       wx.request({
-        url: 'http://127.0.0.1:8888/get_content_index_list',
+        url: 'http://172.20.10.2:8888/get_content_index_list',
         data: body,
         header: {},
         method: 'POST',
         dataType: 'json',
         responseType: 'text',
         success: function (res) {
-          console.log("获取用户数据0")
+          console.log("获取联系人列表",res.data)
         },
         fail: function (res) { },
         complete: function (res) { },
@@ -49,13 +49,14 @@ Page({
         var body = { "open_id": open_id }
 
         wx.request({
-          url: 'http://127.0.0.1:8888/get_content_index_list',
+          url: 'http://172.20.10.2:8888/get_content_index_list',
           data: body,
           header: {},
           method: 'POST',
           dataType: 'json',
           responseType: 'text',
           success: function (res) {
+            console.log("获取联系人列表", res.data)
             that.setData({
               array: res.data
             })
@@ -117,9 +118,12 @@ Page({
 
   },
 
-  calling_phone:function(){
+  calling_phone:function(e){
+    var phone_number = e.target.dataset.phone
+    console.log("打电话", phone_number)
+    
     wx.makePhoneCall({
-      phoneNumber: "18682435851", //此号码并非真实电话号码，仅用于测试
+      phoneNumber: phone_number, //此号码并非真实电话号码，仅用于测试
       success:function(){
         console.log("拨打电话成功！")
       },
@@ -127,13 +131,21 @@ Page({
         console.log("拨打电话失败！")
       }
     })
+  },
   
-  }
-  ,
-  add_phone_handler: function() {
+  add_phone_handler: function(e) {
     console.log("添加号码本")
     wx.navigateTo({
       url: '../edit/edit?is_add=true',
     })
-  }
+  },
+  goto_info:function(e) {
+    var content_id = e.target.dataset.id
+    var url = "../info/info?content_id=" + content_id
+    wx.navigateTo({
+      url: url,
+    })
+    
+
+  },
 })

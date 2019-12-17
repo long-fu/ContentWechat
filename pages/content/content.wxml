@@ -19,10 +19,10 @@
 
 <template name="cell-item">
   <view class="cell-item-view">
-    <image class="head-image-view" src="{{image}}"></image>
-    <view class="item-info-view">
-        <view class="name-view">{{name}}</view>
-        <view class="number-view" bindtap="calling_phone">{{number[0]}}</view>
+    <image class="head-image-view" bindtap="goto_info" data-id="{{content_id}}" src="{{image}}"></image>
+    <view class="item-info-view" data-phone="{{phone_number}}">
+        <view class="name-view">{{nike_name}}</view>
+        <view class="number-view" bindtap="calling_phone" data-phone="{{phone_number}}">{{phone_number}}</view>
     </view>
   </view>
 </template>
