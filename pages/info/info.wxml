@@ -3,13 +3,13 @@
 <!-- <view class="navi_title_view">{{name}}</view> -->
     <!-- 头像 -->
     <view class="avatar_image_bg_view">
-        <image class="avatar_image_view" src="{{image}}" />
+        <image class="avatar_image_view" src="{{info_data.avatar_url}}" />
     </view>
     <!-- 昵称 -->
-    <view class="nike_name_view">{{name}}</view>
+    <view class="nike_name_view">{{info_data.nike_name}}</view>
     <!-- 号码 -->
     <view class="phone_number_body_view">
-        <block wx:for="{{array}}" wx:key="item" wx:for-index="index">
+        <block wx:for="{{info_data.array}}" wx:key="item" wx:for-index="index">
             <template is="phone_number" data="{{...item}}"></template>
         </block>
     </view>
@@ -19,11 +19,11 @@
     <!-- <view class="remarks_text_view">{{remarks}}</view> -->
 
 
-    <button class="delete_btn" bind:tap="delete">删除</button>
+    <button class="delete_btn" bind:tap="delete_index">删除</button>
 
 </view>
 <template name="phone_number">
     <view class="phone_title_view">电话{{index}}</view>
-    <view class="phone_number_view" bind:tap="calling_phone" data-phone="{{phone}}">{{phone}}</view>
+    <view class="phone_number_view" bind:tap="calling_phone" data-phone="{{phone_number}}">{{phone_number}}</view>
     <view class="line_view"></view>
 </template>

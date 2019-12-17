@@ -4,20 +4,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-    image:"../../resource/image/touxiang.jpeg",
-    name:"我是谁",
-    array: [
-      {phone:"1868225123"},
-      {phone:"1868225123"}
-  ],
-    remark: "我就是备注"
+    content_id: null,
+    info_data: {}
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    console.log("联系人id",options.content_id)
+    var that = this
+
+    that.setData({
+      content_id: options.content_id
+    })
+
+    var body = { "content_id": this.data.content_id }
+    wx.request({
+      url: 'http://172.20.10.2:8888/get_content_info',
+      data: body,
+      header: {},
+      method: 'POST',
+      dataType: 'json',
+      success: function (res) {
+        console.log("获取联系人详细信息", res.data)
+        // that.data = res.data
+        that.setData({
+          info_data: res.data
+        })
+        console.log("重新给值",that.data)
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
   },
 
   /**
@@ -68,11 +88,25 @@ Page({
   onShareAppMessage: function () {
 
   },
-  delete: function(){
+
+  delete_index: function(){
     console.log("删除此条数据")
+    var body = {"content_id": this.data.content_id}
+    wx.request({
+      url: 'http://172.20.10.2:8888/delete_content',
+      data: body,
+      header: {},
+      method: 'POST',
+      dataType: 'json',
+      success: function (res) {
+        console.log("删除一个联系人成功", res.data)
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
   },
   calling_phone:function(e){
-    
+    console.log("点击拨打电弧",e)
     var phone_number = e.target.dataset.phone
     console.log("打电话", phone_number)
     

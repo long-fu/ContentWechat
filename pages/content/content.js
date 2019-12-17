@@ -142,6 +142,7 @@ Page({
   goto_info:function(e) {
     var content_id = e.target.dataset.id
     var url = "../info/info?content_id=" + content_id
+    console.log("去到信息页面",url)
     wx.navigateTo({
       url: url,
     })
