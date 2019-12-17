@@ -4,18 +4,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // flase 增加 true 编辑
-    type: true,
-    name: "",
-    image: "../../resource/image/touxiang.jpeg",
-    phone: [{type:"住宅",number:"18682417876381"},
-    {type:"住宅",number:"18682417876381"}]
+    // false 增加 true 编辑
+    is_add:true,
+    info_data: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {},
+  onLoad: function(options) {
+    console.log("设置参数", options.is_add)
+    var that = this
+    if (options.is_add) {
+      that.setData({
+        type: options.is_add,
+        info_data : {
+          nike_name: "",
+          avatar_url: "",
+          remarks: "",
+          array: [{ type: "",phone_number:""}]
+        }
+      })
+    } else {
+
+    }
+    
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

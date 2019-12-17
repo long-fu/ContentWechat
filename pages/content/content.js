@@ -7,11 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    array:[
-      {image:"../../resource/image/touxiang.jpeg",
-      name:"我的名字",
-      number:["1231235167257"]}
-  ]
+    array:[]
   },
 
   /**
@@ -45,8 +41,6 @@ Page({
     } else {
 
       app.openIdReadyCallback = res => {
-        console.log("回调获取openid",res)
-        
         that.setData({
           openid: res.data.openid
         })
@@ -62,14 +56,14 @@ Page({
           dataType: 'json',
           responseType: 'text',
           success: function (res) {
-            console.log("获取用户数据回调结果",res)
+            that.setData({
+              array: res.data
+            })
           },
           fail: function (res) { },
           complete: function (res) { },
         })
-
       }
-
     }
 
   },
@@ -135,6 +129,11 @@ Page({
     })
   
   }
-
-
+  ,
+  add_phone_handler: function() {
+    console.log("添加号码本")
+    wx.navigateTo({
+      url: '../edit/edit?is_add=true',
+    })
+  }
 })

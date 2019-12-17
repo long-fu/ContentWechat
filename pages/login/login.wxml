@@ -1,6 +1,12 @@
 <!--pages/login/login.wxml-->
 <!-- <text>pages/login/login.wxml</text> -->
 
+<view class="container_body_view">
+<view class="logo_view">
+<image class="logo_image_view" src="" /></view>
+
+</view>
+
 <view class="container_body">
  <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
 </view>

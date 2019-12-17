@@ -1,6 +1,13 @@
 <view class="container_body">
 
 <!-- <view class="page-section-title">电话本</view> -->
+
+
+<view class="search_bar_view">
+<view class="search_button_view"></view>
+<view class="add_button_view" bindtap="add_phone_handler"></view>
+</view>
+
 <scroll-view class="table-view" scroll-y="true">
 <block wx:for="{{array}}" wx:key="item">
     <template is="cell-item" data="{{...item}}"></template>

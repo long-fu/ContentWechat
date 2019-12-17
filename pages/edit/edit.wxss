@@ -61,6 +61,7 @@ page {
 .phone_number_view {
     background-color: thistle;
     margin-top: 44rpx;
+    padding-bottom: 11px;
     width: 100%;
 
     display: flex;
@@ -69,19 +70,21 @@ page {
 
 .add_phone_btn_view{
 
+    background-color: gray;
     margin-top: 20rpx;
     
-    height: 44rpx;
+    height: 30px;
     width: 100%;
 
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
+    /* justify-content: center; */
 }
 
 .image_btn{
-    width: 60rpx;
-    height: 60rpx;
+    width: 30px;
+    height: 30px;
     background-color: darkmagenta;
     margin-left: 8rpx;
     align-items: center;
@@ -107,6 +110,17 @@ page {
     color: white;
 }
 
+.add_btn {
+    margin-top: 40rpx;
+
+    width: 100%;
+    height: 44rpx;
+    background-color:blue;
+    text-align: center;
+    font-size: 35rpx;
+    color: white;
+}
+
 .input_phone_view{
     width: 100%;
     height: 66rpx;
@@ -120,9 +134,9 @@ page {
 
 .input_phone_number_textarea {
     height: 65rpx;
-    width: 80%;
     margin-left: 8rpx;
     background-color: yellowgreen;
+    flex-grow: 2;
 }
 
 .line_view{
