@@ -22,7 +22,7 @@ Page({
           nike_name: "",
           avatar_url: "",
           remarks: "",
-          array: [{ type: "",phone_number:""}]
+          array: [{ type: "住宅",phone_number:""}]
         }
       })
     } else {
@@ -78,7 +78,7 @@ Page({
     console.log("新增电话")
     var that = this
     var info_data = that.data.info_data
-    var new_number = { type: "", phone_number: "" }
+    var new_number = { type: "住宅", phone_number: "" }
     info_data.array.push(new_number)
 
     console.log("老的数据", info_data)
