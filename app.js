@@ -1,5 +1,5 @@
 //app.js
-
+const util = require('utils/util.js')
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -11,15 +11,15 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-
         var code = res.code;
         var appid = 'wxbfcc58c38ba0d08b';	//小程序的appid
         var secret = 'e809c7cb5772bf4e8d073acdca0d4be1';	//小程序的secret
         var json_obj = { "code": code, "appid": appid, "secret": secret }
         var str_json = JSON.stringify(json_obj, null, "\t")
         var that = this
+        var url = util.root_url + "get_open_id"
         wx.request({
-          url: 'http://127.0.0.1:8888/get_open_id',
+          url: url,
           data: str_json,
           header: {},
           method: 'POST',
