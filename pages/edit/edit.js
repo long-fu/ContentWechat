@@ -17,13 +17,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log("设置参数", options)
+    console.log("设置参数", options.is_add)
+
     var that = this
 
-    if (options.is_add == true) {
-      console.log("新增数据")
+    that.setData({
+      type: options.is_add
+    })
+    // console.log(that.data.type == true, that.data.type)
+    if (that.data.type == "true") {
+      console.log("新增数据", that.data.type)
+
       that.setData({
-        type: options.is_add,
         info_data : {
           nike_name: "",
           avatar_url: "",
@@ -35,8 +40,8 @@ Page({
       
       var user_info = wx.getStorageSync("user_info")
       console.log("重新编辑数据",user_info)
+
       that.setData({
-        type: options.is_add,
         info_data: user_info
       })
       wx.removeStorageSync("user_info")
@@ -84,7 +89,7 @@ Page({
   },
 
   bindFormSubmit: function (e) {
-    
+    console.log(e.detail.value)
     var data = e.detail.value
     console.log("输入的号码部分",data)
     var nike_name = ""
@@ -145,7 +150,27 @@ Page({
   add_new_phone:function() {
     // console.log("新增电话")
     var that = this
+    
     var info_data = that.data.info_data
+
+
+    // const query = wx.createSelectorQuery()
+    // var query_info = query.selectAll(".input_phone_number_textarea")
+    // query_info.fields({
+    //   dataset: true,
+    //   value: true,
+    // }, function (res){
+    //   console.log("数据回调",res)
+    // }).exec()
+
+    // query.selectViewport().scrollOffset()
+    // query.exec(function (res) {
+    //   res[0].top       // #the-id节点的上边界坐标
+    //   res[1].scrollTop // 显示区域的竖直滚动位置
+    // })
+
+
+
     var new_number = { phone_type: "住宅", phone_number: "" }
     info_data.array.push(new_number)
 

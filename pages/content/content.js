@@ -187,6 +187,7 @@ Page({
       url: '../edit/edit?is_add=true',
     })
   },
+  
   goto_info:function(e) {
     var content_id = e.target.dataset.id
     var url = "../info/info?content_id=" + content_id
