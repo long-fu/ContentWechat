@@ -1,4 +1,7 @@
 // pages/info/info.js
+
+const util = require('../../utils/util.js')
+
 Page({
   /**
    * 页面的初始数据
@@ -6,7 +9,6 @@ Page({
   data: {
     content_id: null,
     info_data: {}
-
   },
 
   /**
@@ -21,19 +23,18 @@ Page({
     })
 
     var body = { "content_id": this.data.content_id }
+
+    var url = util.root_url + "get_content_info"
     wx.request({
-      url: 'http://172.20.10.2:8888/get_content_info',
+      url: url,
       data: body,
       header: {},
       method: 'POST',
       dataType: 'json',
       success: function (res) {
-        console.log("获取联系人详细信息", res.data)
-        // that.data = res.data
         that.setData({
           info_data: res.data
         })
-        console.log("重新给值",that.data)
       },
       fail: function (res) { },
       complete: function (res) { },
@@ -90,23 +91,40 @@ Page({
   },
 
   delete_index: function(){
-    console.log("删除此条数据")
+    
     var body = {"content_id": this.data.content_id}
+    var url = util.root_url + "delete_content"
     wx.request({
-      url: 'http://172.20.10.2:8888/delete_content',
+      url: url,
       data: body,
       header: {},
       method: 'POST',
       dataType: 'json',
       success: function (res) {
-        console.log("删除一个联系人成功", res.data)
+        
+        var pages = getCurrentPages()
+        var pr_page = pages[pages.length - 2]
+        console.log(pr_page)
+
+        wx.navigateBack({
+          delta: 1
+        })
       },
       fail: function (res) { },
       complete: function (res) { },
     })
   },
+  edit_info: function () {
+    console.log("去到编辑界面")
+    
+    wx.setStorageSync('user_info', this.data.info_data)
+    
+    wx.navigateTo({
+      url: '../edit/edit?is_add=false',
+    })
+  },
   calling_phone:function(e){
-    console.log("点击拨打电弧",e)
+    
     var phone_number = e.target.dataset.phone
     console.log("打电话", phone_number)
     
@@ -119,6 +137,7 @@ Page({
         console.log("拨打电话失败！")
       }
     })
-  }
+  },
+
 
 })

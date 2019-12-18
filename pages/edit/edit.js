@@ -1,5 +1,8 @@
 // pages/edit/edit.js
 const app = getApp()
+
+const util = require('../../utils/util.js')
+
 Page({
   /**
    * 页面的初始数据
@@ -27,7 +30,13 @@ Page({
         }
       })
     } else {
-
+      
+      var user_info = wx.getStorageSync("user_info")
+      that.setData({
+        type: options.is_add,
+        info_data: user_info
+      })
+      wx.removeStorageSync("user_info")
     }
     
   },
@@ -81,31 +90,30 @@ Page({
       if (key == 'nike_name'){
         nike_name = data[key]
       } else {
-        console.log("电话本号码", data[key])
+        // console.log("电话本号码", data[key])
         phone_number.push(data[key])
       }
     }
-    console.log("我的电话本",phone_number)
+    // console.log("我的电话本",phone_number)
     var array = []
     phone_number.forEach(phone => {
-      console.log("获取遍历数组",phone)
+      // console.log("获取遍历数组",phone)
       array.push({phone_type:"住宅",phone_number: phone})
     })
-    // for (var phone in phone_number) {
-    //   console.log("获取遍历数组",phone)
-    //   array.push({phone_type:"住宅",phone_number: phone})
-    // }
-    console.log("用户电话号码",array)
+    // console.log("用户电话号码",array)
+
     var body = {
-      "open_id":  app.globalData.openid,
-      "nike_name": nike_name,
-      "avatar_url": "",
-      "remark": "",
-      "array": array
+      open_id:  app.globalData.openid,
+      nike_name: nike_name,
+      avatar_url: "",
+      remark: "",
+      array: array
     }
 
+    var url = util.root_url + "add_content"
+
     wx.request({
-      url: 'http://172.20.10.2:8888/add_content',
+      url: url,
       data: body,
       header: {},
       method: 'POST',
@@ -113,6 +121,17 @@ Page({
       responseType: 'text',
       success: function (res) {
         console.log("添加一个用户成功", res.data)
+        
+        if (data.is_add) {
+          wx.navigateBack({
+            url: 1,
+          })
+        } else {
+          wx.navigateBack({
+            url: 2,
+          })
+        }
+
       },
       fail: function (res) { },
       complete: function (res) { },
@@ -121,13 +140,13 @@ Page({
   },
 
   add_new_phone:function() {
-    console.log("新增电话")
+    // console.log("新增电话")
     var that = this
     var info_data = that.data.info_data
     var new_number = { phone_type: "住宅", phone_number: "" }
     info_data.array.push(new_number)
 
-    console.log("老的数据", info_data)
+    // console.log("老的数据", info_data)
     
     that.setData({
       info_data: info_data

@@ -18,6 +18,7 @@
     <!-- <view class="remarks_title_view">备注</view> -->
     <!-- <view class="remarks_text_view">{{remarks}}</view> -->
 
+    <button class="edit_btn" bind:tap="edit_info">编辑</button>
 
     <button class="delete_btn" bind:tap="delete_index">删除</button>
 

@@ -1,3 +1,6 @@
+
+const root_url = "http://127.0.0.1:8888/"
+
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -15,5 +18,6 @@ const formatNumber = n => {
 }
 
 module.exports = {
+  root_url: root_url,
   formatTime: formatTime
 }

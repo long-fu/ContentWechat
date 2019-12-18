@@ -1,6 +1,9 @@
 // pages/content/content.js
 
+const util = require('../../utils/util.js')
+
 const app = getApp()
+
 Page({
 
   /**
@@ -15,16 +18,23 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+
+    var url = util.root_url + "get_content_index_list"
+
     if (app.globalData.openid) {
+      
       
       // that.openid = app.globalData.openid
       that.setData({
         openid: app.globalData.openid
       })
+
       var open_id = app.globalData.openid
+
       var body = { "open_id": open_id }
+      
       wx.request({
-        url: 'http://172.20.10.2:8888/get_content_index_list',
+        url: url,
         data: body,
         header: {},
         method: 'POST',
@@ -41,15 +51,17 @@ Page({
     } else {
 
       app.openIdReadyCallback = res => {
+        
         that.setData({
           openid: res.data.openid
         })
 
         var open_id = app.globalData.openid
+        
         var body = { "open_id": open_id }
 
         wx.request({
-          url: 'http://172.20.10.2:8888/get_content_index_list',
+          url: url,
           data: body,
           header: {},
           method: 'POST',
