@@ -158,8 +158,26 @@ Page({
   },
 
   delete_phone_number:function(e) {
-
-    console.log("删除号码",e)
     
+    var index = e.currentTarget.dataset.index
+    
+    console.log("删除号码的下标", index)
+
+    var array = this.data.info_data.array
+    
+    array.splice(index,1)
+
+    console.log("数组数据",array)
+
+    var info_data = this.data.info_data
+
+    var that = this
+    info_data.array = array
+    
+    that.setData({
+      info_data: info_data
+    });
+
+
   }
 });
