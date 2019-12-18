@@ -153,29 +153,12 @@ Page({
     
     var info_data = that.data.info_data
 
-
-    // const query = wx.createSelectorQuery()
-    // var query_info = query.selectAll(".input_phone_number_textarea")
-    // query_info.fields({
-    //   dataset: true,
-    //   value: true,
-    // }, function (res){
-    //   console.log("数据回调",res)
-    // }).exec()
-
-    // query.selectViewport().scrollOffset()
-    // query.exec(function (res) {
-    //   res[0].top       // #the-id节点的上边界坐标
-    //   res[1].scrollTop // 显示区域的竖直滚动位置
-    // })
-
-
-
     var new_number = { phone_type: "住宅", phone_number: "" }
     info_data.array.push(new_number)
 
     // console.log("老的数据", info_data)
     
+    //// 重新刷新页面 对数据刷新
     that.setData({
       info_data: info_data
     });
