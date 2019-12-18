@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    is_show: false,
     array:[]
   },
 
@@ -20,6 +21,10 @@ Page({
     var that = this
 
     var url = util.root_url + "get_content_index_list"
+    
+    that.setData({
+      is_show: true
+    })
 
     if (app.globalData.openid) {
       
@@ -76,6 +81,7 @@ Page({
           fail: function (res) { },
           complete: function (res) { },
         })
+
       }
     }
 
@@ -92,21 +98,51 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    // 显示
+    if (this.data.is_show == false){
+      
+      var that = this
 
+      var url = util.root_url + "get_content_index_list"
+
+      var open_id = app.globalData.openid
+
+      var body = { "open_id": open_id }
+
+      wx.request({
+        url: url,
+        data: body,
+        header: {},
+        method: 'POST',
+        dataType: 'json',
+        responseType: 'text',
+        success: function (res) {
+          console.log("获取联系人列表", res.data)
+          that.setData({
+            array: res.data
+          })
+        },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    }
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    console.log("生命周期函数--监听页面隐藏")
+    this.setData({
+      is_show: false
+    })
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    console.log("生命周期函数--监听页面卸载")
   },
 
   /**
