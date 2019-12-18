@@ -17,9 +17,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // console.log("设置参数", options.is_add)
+    console.log("设置参数", options)
     var that = this
-    if (options.is_add) {
+
+    if (options.is_add == true) {
+      console.log("新增数据")
       that.setData({
         type: options.is_add,
         info_data : {
@@ -32,6 +34,7 @@ Page({
     } else {
       
       var user_info = wx.getStorageSync("user_info")
+      console.log("重新编辑数据",user_info)
       that.setData({
         type: options.is_add,
         info_data: user_info
