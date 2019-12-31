@@ -185,7 +185,9 @@ Page({
     that.setData({
       info_data: info_data
     });
+  },
 
-
+  bindblur_handler:function(e){
+    console.log("失去焦点",e)
   }
 });

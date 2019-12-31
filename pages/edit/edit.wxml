@@ -7,7 +7,7 @@
         <!-- 名称 -->
         <view class="nike_name_view">
             <text class="nike_name_title_text_view">姓名</text>
-            <textarea name="nike_name" class="nike_name_textarea_view" placeholder="请输入输入姓名" value="{{info_data.nike_name}}"></textarea>
+            <input data-value="99" bindblur="bindblur_handler" type="text" name="nike_name" class="nike_name_textarea_view" placeholder="请输入输入姓名" value="{{info_data.nike_name}}"></input>
         </view>
         <!-- 号码 -->
         <view class="phone_number_view">
@@ -16,7 +16,7 @@
                 <!-- <template is="add_input_phone" data="{{...item}}"></template> -->
                 <view class="input_phone_view">
                     <image bindtap="delete_phone_number" data-index="{{index}}" class="image_btn" src="" />
-                    <textarea name="phone_number[{{index}}]" class="input_phone_number_textarea" placeholder="请输入号码" data-value="{{item.phone_number}}" value="{{item.phone_number}}"></textarea>
+                    <input bindblur="bindblur_handler" type="number" name="phone_number[{{index}}]" class="input_phone_number_textarea" placeholder="请输入号码" data-value="{{item.phone_number}}" value="{{item.phone_number}}"></input>
                     <view class="line_view"></view>
                 </view>
             </block>
