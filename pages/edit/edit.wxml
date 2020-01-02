@@ -1,6 +1,6 @@
 <view class="container_body">
     <!-- 头像 -->
-    <form bindsubmit="bindFormSubmit">
+    <!-- <form bindsubmit="bindFormSubmit"> -->
         <view class="avatar_image_bg_view">
             <image class="avatar_image_view" src="{{info_data.avatar_url}}" />
         </view>
@@ -33,7 +33,7 @@
         <block wx:else="{{is_add == 'false'}}">
             <button class="add_btn" bindtap="save_info_data" formType="submit">保存</button>
         </block>
-    </form>
+    <!-- </form> -->
 </view>
 <template name="add_input_phone">
     <view class="input_phone_view">
