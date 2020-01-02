@@ -1,5 +1,7 @@
 
-const root_url = "http://192.168.0.105:8888/"
+
+// 格式化地址
+const root_url = "http://192.168.2.100:8888/"
 
 const formatTime = date => {
   const year = date.getFullYear()
@@ -16,6 +18,8 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
+
+
 
 module.exports = {
   root_url: root_url,

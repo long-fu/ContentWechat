@@ -16,7 +16,7 @@
                 <!-- <template is="add_input_phone" data="{{...item}}"></template> -->
                 <view class="input_phone_view">
                     <image bindtap="delete_phone_number" data-index="{{index}}" class="image_btn" src="" />
-                    <input bindblur="bindblur_handler" type="number" name="phone_number[{{index}}]" class="input_phone_number_textarea" placeholder="请输入号码" data-value="{{item.phone_number}}" value="{{item.phone_number}}"></input>
+                    <input bindinput="bindinput_handler" bindblur="bindblur_handler" data-index="{{inde}}" type="number" name="phone_number[{{index}}]" class="input_phone_number_textarea" placeholder="请输入号码" data-value="{{item.phone_number}}" value="{{item.phone_number}}"></input>
                     <view class="line_view"></view>
                 </view>
             </block>

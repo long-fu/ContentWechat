@@ -189,5 +189,11 @@ Page({
 
   bindblur_handler:function(e){
     console.log("失去焦点",e)
+  },
+  
+  bindinput_handler:function(e) {
+    console.log("获取实时输入的数据")
+    
   }
+
 });
