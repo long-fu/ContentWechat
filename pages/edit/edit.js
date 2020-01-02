@@ -148,17 +148,19 @@ Page({
   },
 
   add_new_phone:function() {
-    // console.log("新增电话")
-    var that = this
     
+    
+
+    var that = this
+    console.log("新增电话", that.data.info_data.array)
+
     var info_data = that.data.info_data
 
     var new_number = { phone_type: "住宅", phone_number: "" }
+
     info_data.array.push(new_number)
 
-    // console.log("老的数据", info_data)
-    
-    //// 重新刷新页面 对数据刷新
+    // 重新刷新页面 对数据刷新
     that.setData({
       info_data: info_data
     });
@@ -191,9 +193,25 @@ Page({
     console.log("失去焦点",e)
   },
   
+  bindinput_nike_name_handler:function(e) {
+    console.log("输入的昵称",e.detail.value)
+    var that = this
+    var info_data = that.data.info_data
+    info_data.nike_name = e.detail.value
+    that.setData({
+      info_data : info_data
+    })
+  },
+
   bindinput_handler:function(e) {
-    console.log("获取实时输入的数据")
-    
+    console.log("获取实时输入的数据",e)
+    var index = e.currentTarget.dataset.index
+    var that = this
+    var info_data = that.data.info_data
+    info_data.array[index].phone_number = e.detail.value
+    that.setData({
+      info_data : info_data
+    })
   }
 
 });
